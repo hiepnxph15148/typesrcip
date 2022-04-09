@@ -1,0 +1,90 @@
+{
+  "products": [
+    {
+      "name": "Products AĐ",
+      "price": "500.000",
+      "id": 1
+    },
+    {
+      "name": "Products AB",
+      "price": "500.0000",
+      "id": 2
+    }
+  ],
+  "user": [
+    {
+      "id": 1,
+      "name": "Nguyễn Xuân Hiệp",
+      "email": "hiepnxph15148@fpt.edu.vn",
+      "password": 28072002
+    },
+    {
+      "id": 0,
+      "name": "Nguyễn Xuân Hiệp",
+      "email": "hiepnxph15148@gmail.com",
+      "password": 28072002
+    },
+    {
+      "name": "Nguyễn Xuân Hiệp",
+      "email": "hiepnxph@gmail.com",
+      "password": "0977770233",
+      "id": 3
+    },
+    {
+      "role": 0,
+      "name": "Nguyễn Xuân Hiệp",
+      "email": "hiepnxph@gmail.com",
+      "password": "0977770233",
+      "id": 4
+    },
+    {
+      "role": 0,
+      "name": "Hiệp",
+      "email": "admin@gmail.com",
+      "password": "01472558369",
+      "id": 5
+    },
+    {
+      "role": 0,
+      "name": "Hiệp",
+      "email": "admin@gmail.com",
+      "password": "01472558369",
+      "id": 6
+    },
+    {
+      "role": 0,
+      "name": "Hiệp",
+      "email": "admin@gmail.com",
+      "password": "01472558369",
+      "id": 7
+    },
+    {
+      "role": 0,
+      "name": "",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "id": 8
+    },
+    {
+      "role": 0,
+      "name": "",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "id": 9
+    },
+    {
+      "role": 0,
+      "name": "admin@gmail.com",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "id": 10
+    },
+    {
+      "role": 0,
+      "name": "hiepnxph15148",
+      "email": "admin@gmail.com",
+      "password": "123456",
+      "id": 11
+    }
+  ]
+}

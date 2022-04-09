@@ -1,4 +1,5 @@
 import React from 'react'
+import { Nav } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 
 type Props = {}
@@ -16,6 +17,11 @@ const Sidebar = (props: Props) => {
             <li className="nav-item">
               <NavLink className="nav-link active" aria-current="page" to="/admin/products">
                 Product
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link active" aria-current="page" to="/admin/categories">
+                Category
               </NavLink>
             </li>
           </ul>
