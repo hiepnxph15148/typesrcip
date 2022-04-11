@@ -26,11 +26,11 @@ import { addct, getall, updatect } from './api/categories';
 import Category from './page/Categories';
 import { TypeCart } from './types/cart';
 import { addCard } from './api/cart';
-import cart from './page/cart';
 import Categoriespage from './page/Categorii';
 import DetaillCategory from './page/DetaillCategory';
 import { Card } from 'react-bootstrap';
 import Cart from './page/cart';
+
 
 
 function App() {
@@ -113,8 +113,9 @@ function App() {
           </div>
           <div className='flex'>
             <li className='block px-4 py-3 hover:text-white'>
-              <NavLink to='carts/:user'><i className="fa-solid fa-cart-shopping  text-black  "></i></NavLink>
+              <NavLink to='cart'><i className="fa-solid fa-cart-shopping  text-black  "></i></NavLink>
             </li>
+          
             <li className='block px-4 py-3 hover:text-white'>
               <a href=""><i className="fa-solid fa-magnifying-glass text-black"></i></a>
             </li>
@@ -132,6 +133,7 @@ function App() {
               <Route index element={<ProductPage product={products} />} />
               <Route path=":id" element={<ProductDetail onAddCart={AddCart} />} />
             </Route>
+            <Route path='cart' element={<Cart/>} />
             <Route path="about" element={<h1 className='text-center py-4'>About page</h1>} />
           </Route>
           <Route path='categories'>
@@ -159,7 +161,3 @@ function App() {
   )
 }
 export default App
-function setcart(arg0: any[]) {
-  throw new Error('Function not implemented.');
-}
-

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
-import { getall } from '../api/categories';
+import { getall, read } from '../api/categories';
 import { list } from '../api/product';
 import { Categories } from '../types/catrgories';
 import { IProduct } from '../types/product';
@@ -17,6 +17,7 @@ type PropsCategory = {
 const ProductPage = (props: PropsProductPage) => {
     const [product, setProduct] = useState<IProduct[]>([]);
     const [category, setCategory] = useState<Categories[]>([]);
+    const [categoriesPD, setcategoriesPD] = useState<Categories | IProduct[]>([])
     const { slug } = useParams()
     useEffect(() => {
         const getCategory = async () => {
@@ -25,6 +26,13 @@ const ProductPage = (props: PropsProductPage) => {
         }
         getCategory()
     }, [slug])
+    useEffect(() => {
+        const getCatePd = async () => {
+          const { data: { products } } = await read(slug)
+          setcategoriesPD(products)
+        }
+        getCatePd()
+      }, [slug])
     return (
         <div className=''>
             <div className='bg-[#FFFFFF] py-4'>
@@ -71,15 +79,44 @@ const ProductPage = (props: PropsProductPage) => {
                 <div className='py-4 max-w-7xl m-auto '>
                     <h3><i className="fa-solid fa-mug-saucer"></i> OUR SPECIAL MENU</h3>
                     <h1 className='text-4xl text-center'>CAFENOD COFFEE HOUSE</h1>
-                    <Tabs>
-                        <TabList>
-                            {category.map((item, index) => {
-                                 return <Tab  key={index}>{item.name}</Tab>
+                    <Tabs className='text-center'>
+                        <TabList className="">
+                            {category.map((item, index,slug) => {
+                                return <Tab key={index} ><div className='font-bold'>{item.name}</div></Tab>
                             })}
                         </TabList>
-
                         <TabPanel>
-                            <h2>Any content 1</h2>
+                            {props.product.map((item, index,slug) => {
+                                return <div className=' py-3' key={index}>
+                                    <div className='bg-white p-3 flex justify-between rounded-lg'>
+                                        <a href=""><img src="https://demo.cmssuperheroes.com/themeforest/cafenod/wp-content/uploads/2021/03/coffee-3.jpg" alt="" className='w-[130px] rounded-lg' /></a>
+                                        <div className='m-auto text-left '>
+                                            <h3 className='text-xl font-bold pr-3'>{item.name}</h3>
+                                            <p>The coffee is brewed by first roasting the green coffee beans over hot coals in a brazier.</p>
+                                            <p > Once the beans are roasted each participant is given an</p>
+                                        </div>
+                                        <span className='bg-[#c7a17a] p-1 rounded-lg'></span>
+
+                                        <p className='m-auto text-2xl text-[#c7a17a] pl-3'><samp>$</samp>{item.price}</p>
+                                    </div>
+                                </div>
+                            })}
+                        </TabPanel>
+                        <TabPanel>
+                        {props.product.map((item, index,slug) => {
+                                return <div className=' py-3' key={index}>
+                                    <div className='bg-white p-3 flex justify-between rounded-lg'>
+                                        <a href=""><img src="https://demo.cmssuperheroes.com/themeforest/cafenod/wp-content/uploads/2021/03/coffee-3.jpg" alt="" className='w-[130px] rounded-lg' /></a>
+                                        <div className='m-auto text-left '>
+                                            <h3 className='text-xl font-bold pr-3'>{item.name}</h3>
+                                            <p>The coffee is brewed by first roasting the green coffee beans over hot coals in a brazier.</p>
+                                            <p > Once the beans are roasted each participant is given an</p>
+                                        </div>
+                                        <span className='bg-[#c7a17a] p-1 rounded-lg'></span>
+                                        <p className='m-auto text-2xl text-[#c7a17a] pl-3'><samp>$</samp>{item.price}</p>
+                                    </div>
+                                </div>
+                            })}
                         </TabPanel>
                         <TabPanel>
                             <h2>Any content 2</h2>
@@ -88,21 +125,7 @@ const ProductPage = (props: PropsProductPage) => {
 
 
 
-                    {props.product.map((item, index) => {
-                        return <div className=' py-3' key={index}>
-                            <div className='bg-white p-3 flex justify-between rounded-lg'>
-                                <a href=""><img src="https://demo.cmssuperheroes.com/themeforest/cafenod/wp-content/uploads/2021/03/coffee-3.jpg" alt="" className='w-[130px] rounded-lg' /></a>
-                                <div className='m-auto text-left '>
-                                    <h3 className='text-xl font-bold pr-3'>{item.name}</h3>
-                                    <p>The coffee is brewed by first roasting the green coffee beans over hot coals in a brazier.</p>
-                                    <p > Once the beans are roasted each participant is given an</p>
-                                </div>
-                                <span className='bg-[#c7a17a] p-1 rounded-lg'></span>
 
-                                <p className='m-auto text-2xl text-[#c7a17a] pl-3'><samp>$</samp>{item.price}</p>
-                            </div>
-                        </div>
-                    })}
 
                 </div>
             </div>

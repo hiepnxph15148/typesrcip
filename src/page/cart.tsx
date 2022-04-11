@@ -4,10 +4,7 @@ import { deleteCart } from '../api/cart'
 import { read } from '../api/product'
 import {TypeCart} from '../types/cart'
 
-type Props = {
-    onRemoveCR: (_id : number) => void
-    id: (id:number ) => void
-}
+type Props = {}
 
 const Cart = (props: Props) => {
     const[carts,setCart] = useState<TypeCart[]>([])
